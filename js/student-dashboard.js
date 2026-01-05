@@ -7,7 +7,7 @@
 
 (() => {
   const STATE = {
-    student: { name: "User", avatar: "account-icon.svg", busNumber: "BUS-12", route: "North Campus" },
+    student: { name: "User", busNumber: "BUS-12", route: "North Campus" },
     qrScanner: null,
     scanning: false,
     map: null,
@@ -57,9 +57,6 @@
 
   // Load demo student info into UI
   function loadStudentInfo() {
-    document.getElementById("studentNameNav").textContent = STATE.student.name;
-    const avatar = document.getElementById("studentAvatar");
-    avatar.src = STATE.student.avatar;
     document.getElementById("busNumber").textContent = STATE.student.busNumber;
     document.getElementById("routeInfo").textContent = `Route: ${STATE.student.route}`;
     document.getElementById("trackBusNumber").textContent = STATE.student.busNumber;
@@ -160,7 +157,6 @@
   function setupQRScannerElements() {
     const startBtn = document.getElementById("startScanBtn");
     const stopBtn = document.getElementById("stopScanBtn");
-    const qrStatus = document.getElementById("qrStatus");
 
     startBtn.addEventListener("click", () => startScanner());
     stopBtn.addEventListener("click", () => stopScanner());
@@ -169,7 +165,6 @@
   }
 
   async function startScanner() {
-    const qrReaderContainer = document.getElementById("qrReader");
     const startBtn = document.getElementById("startScanBtn");
     const stopBtn = document.getElementById("stopScanBtn");
     const qrStatus = document.getElementById("qrStatus");
@@ -181,7 +176,7 @@
     }
 
     // Create the scanner
-    STATE.qrScanner = new Html5Qrcode(/* element id */ "qrReader", /* verbose= */ false);
+    STATE.qrScanner = new Html5Qrcode("qrReader", false);
     try {
       const devices = await Html5Qrcode.getCameras();
       const cameraId = (devices && devices.length) ? devices[0].id : null;
@@ -337,27 +332,28 @@
     });
   }
 
-  // Logout handling (confirm-only). Modal is opened via data attributes on the logout button.
+  // Logout handling
   function setupLogout() {
     const confirmBtn = document.getElementById("confirmLogoutBtn");
     if (confirmBtn) {
       confirmBtn.addEventListener("click", () => {
-        // demo: clear local storage and redirect to index (or perform real logout)
+        // Close the modal first
+        const modalEl = document.getElementById('logoutModal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) modal.hide();
+        
+        // Clear storage and redirect
         localStorage.clear();
         showToast("Logged out");
         setTimeout(() => { window.location.href = "index.html"; }, 800);
       });
     }
 
-    // Safety: if your markup still uses an <a href="#"> for logout, prevent the default navigation
-    const logoutTrigger = document.getElementById("logoutBtn");
-    if (logoutTrigger) {
-      logoutTrigger.addEventListener("click", (e) => {
-        // if it's an anchor, stop it from jumping
-        if (e.target && e.target.tagName === "A") {
-          e.preventDefault();
-        }
-        // If it's a button with data-bs-toggle, Bootstrap will open the modal for us.
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (e) => {
+        // No need to prevent default for button
+        // Bootstrap will handle the modal via data-bs-toggle
       });
     }
   }
