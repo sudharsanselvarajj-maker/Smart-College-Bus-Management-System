@@ -1,0 +1,183 @@
+:root{
+  --brand-1:#0d6efd;      /* primary */
+  --brand-2:#0b7285;      /* teal */
+  --bg:#f6f9fc;
+  --muted:#6c757d;
+  --card-radius:12px;
+  --glass: rgba(255,255,255,0.6);
+  --accent:#ffb703;
+  --max-width:1400px;
+  --shadow-sm: 0 3px 10px rgba(25,30,40,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
+  color:#222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Topbar
+.topbar{
+  background: linear-gradient( #0d6efd);
+  padding: .55rem 1rem;
+  box-shadow: 0 4px 18px rgba(13,110,253,0.08);
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+}
+ */
+.brand-title{ 
+  font-weight:850; 
+  color:#fff; 
+  line-height:1; 
+  font-size: 1.1rem;
+}
+
+.brand-sub{ 
+  font-size:11px; 
+  color:rgba(255,255,255,0.85); 
+  margin-top:2px; 
+  line-height: 1;
+}
+
+/* Layout */
+.container-fluid{ max-width:var(--max-width); margin:auto; padding:1rem; }
+
+/* Cards */
+.section-card{ background:transparent; }
+.card{ border:none; border-radius:var(--card-radius); }
+.stat-card .card-body{ padding:1rem; }
+.stat-card{ transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.stat-card:hover{ transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+.stat-icon{
+  width:56px; 
+  height:56px;
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+  border-radius:12px; 
+  font-size:1.4rem;
+}
+
+/* Action cards */
+.action-card{ 
+  transition:transform .18s ease, box-shadow .18s ease;
+  border: 1px solid #e9ecef;
+}
+.action-card:hover{ 
+  transform:translateY(-4px); 
+  box-shadow:var(--shadow-sm);
+  border-color: #dee2e6;
+}
+
+/* Map */
+.map-area{
+  height:480px;
+  border-radius:10px;
+  border:1px solid #e9f2ff;
+  box-shadow: 0 8px 26px rgba(12,44,88,0.04);
+  overflow:hidden;
+  background:linear-gradient(180deg,#eef6ff, #fff);
+}
+
+/* Complaint cards */
+.complaint-card{
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.complaint-card:hover{
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-color: #dee2e6;
+}
+
+.complaint-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.complaint-meta{
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* Table styles */
+.table thead th{
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr{
+  transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover{
+  background-color: #f8f9fa;
+}
+
+/* List styles */
+.list-group .list-group-item{ 
+  border-radius:8px; 
+  margin-bottom:8px; 
+}
+
+/* Badges */
+.badge{
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+  font-size: 0.85rem;
+}
+
+/* Utilities */
+.small{ font-size:.85rem; }
+.text-muted{ color:var(--muted) !important; }
+
+/* Form controls */
+input[type="date"],
+input[type="text"],
+select,
+textarea{
+  border-radius: 8px;
+}
+
+/* Buttons */
+.btn{
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px){
+  .map-area{ height:320px; }
+  .container-fluid{ padding: 0.75rem; }
+  .complaint-header{ flex-direction: column; }
+  .complaint-header .badge{ margin-top: 0.5rem; }
+}
+
+@media (max-width: 768px){
+  .stat-icon{ width: 48px; height: 48px; font-size: 1.2rem; }
+  .brand-title{ font-size: 1rem; }
+  .brand-sub{ font-size: 10px; }
+}
