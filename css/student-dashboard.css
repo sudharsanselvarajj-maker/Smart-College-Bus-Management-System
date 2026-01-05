@@ -1,0 +1,102 @@
+:root{
+  --brand-1:#0d6efd;      /* primary */
+  --brand-2:#0b7285;      /* teal */
+  --bg:#f6f9fc;
+  --muted:#6c757d;
+  --card-radius:12px;
+  --glass: rgba(255,255,255,0.6);
+  --accent:#ffb703;
+  --max-width:1200px;
+  --shadow-sm: 0 3px 10px rgba(25,30,40,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
+  color:#222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Topbar */
+.topbar{
+  background: linear-gradient(90deg, var(--brand-1), #0069d9);
+  padding: .55rem 1rem;
+  box-shadow: 0 4px 18px rgba(13,110,253,0.08);
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+  object-fit:cover;
+  border-radius:8px;
+  background:white;
+  padding:4px;
+}
+
+.brand-title{ font-weight:600; color:#fff; line-height:1; }
+.brand-sub{ font-size:11px; color:rgba(255,255,255,0.85); margin-top:-2px; }
+
+/* Avatar */
+.avatar{
+  height:34px;
+  width:34px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.12);
+}
+
+/* Layout */
+.container-fluid{ max-width:var(--max-width); margin:auto; padding:1rem; }
+
+/* Cards */
+.section-card{ background:transparent; }
+.card{ border:none; border-radius:var(--card-radius); }
+.stat-card .card-body{ padding:1rem; }
+.stat-icon{
+  width:56px; height:56px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:12px; font-size:1.4rem;
+}
+
+/* Action cards */
+.action-card{ transition:transform .18s ease, box-shadow .18s ease; }
+.action-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-sm); }
+
+/* QR */
+.qr-box{
+  width:100%;
+  max-width:420px;
+  height:320px;
+  background:linear-gradient(180deg, #ffffff, #f8fbff);
+  border-radius:10px;
+  border:1px solid #e6eef9;
+  display:flex; align-items:center; justify-content:center;
+  margin:auto;
+  box-shadow: 0 6px 18px rgba(29,41,63,0.04);
+}
+
+/* Map */
+.map-area{
+  height:480px;
+  border-radius:10px;
+  border:1px solid #e9f2ff;
+  box-shadow: 0 8px 26px rgba(12,44,88,0.04);
+  overflow:hidden;
+  background:linear-gradient(180deg,#eef6ff, #fff);
+}
+
+/* List styles */
+.list-group .list-group-item{ border-radius:8px; margin-bottom:8px; }
+
+/* Utilities */
+.small{ font-size:.85rem; }
+.text-muted{ color:var(--muted) !important; }
+
+/* Responsive tweaks */
+@media (max-width: 992px){
+  .map-area{ height:320px; }
+  .qr-box{ height:260px; }
+}
