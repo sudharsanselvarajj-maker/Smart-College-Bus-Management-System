@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Create Account — Smart Bus Tracking</title>
+    <link rel="stylesheet" href="./css/register.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <div class="brand">
+                <img src="logo192.png" alt="logo" style="width: 50px; height: 50px;">
+                <div class="brand-text">
+                    <span class="brand-title">Smart Bus Tracking -> Student Registration</span>
+                </div>
+            </div>
+            <nav aria-label="Main">
+                <a class="nav-link" href="./index.html">Sign in</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main" role="main">
+        <section class="card register-card" aria-labelledby="registerHeading">
+            <form id="registerForm" class="card-right" novalidate>
+                <h1 id="registerHeading" class="sr-only">Create your account</h1>
+
+                <fieldset class="form-grid">
+                    <legend class="sr-only">Student registration form</legend>
+
+                    <label for="fullname">Full name *</label>
+                    <input id="fullname" name="fullname" type="text" required placeholder="Jane Doe" autocomplete="name">
+
+                    <label for="email">Email address *</label>
+                    <input id="email" name="email" type="email" required placeholder="you@school.edu" autocomplete="email">
+
+                    <label for="studentId">Student ID *</label>
+                    <input id="studentId" name="studentId" type="text" required placeholder="STU001" autocomplete="off">
+
+                    <label for="phone">Phone number *</label>
+                    <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" required placeholder="10-digit mobile" aria-describedby="phoneHelp">
+                    <small id="phoneHelp" class="muted">Enter 10-digit mobile number (numbers only)</small>
+
+                    <label for="department">Department *</label>
+                    <select id="department" name="department" required>
+                        <option value="">Select department</option>
+                        <option value="cse">Computer Science & Engineering</option>
+                        <option value="ece">Electronics & Communication</option>
+                        <option value="eee">Electrical & Electronics</option>
+                        <option value="mech">Mechanical Engineering</option>
+                        <option value="civil">Civil Engineering</option>
+                        <option value="it">Information Technology</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <!-- Combined Year / Semester dropdown (single control) -->
+                    <label for="yearSemester">Year / Semester *</label>
+                    <select id="yearSemester" name="yearSemester" required aria-describedby="yearSemesterHelp">
+                        <option value="">Select year / semester</option>
+                        <!-- 1st Year -->
+                        <option value="1-1">1st Year / 1st Semester</option>
+                        <option value="1-2">1st Year / 2nd Semester</option>
+                        <!-- 2nd Year -->
+                        <option value="2-3">2nd Year / 3rd Semester</option>
+                        <option value="2-4">2nd Year / 4th Semester</option>
+                        <!-- 3rd Year -->
+                        <option value="3-5">3rd Year / 5th Semester</option>
+                        <option value="3-6">3rd Year / 6th Semester</option>
+                        <!-- Other / Diploma -->
+                        <option value="other-other">Other / Diploma</option>
+                    </select>
+                    <small id="yearSemesterHelp" class="muted">Choose the combined Year and Semester (one selection).</small>
+
+                    <!-- Hidden inputs that get populated from the combined select so backend receives separate fields -->
+                    <input type="hidden" id="yearOnly" name="year">
+                    <input type="hidden" id="semesterOnly" name="semester">
+
+                    <label for="address">Residential address *</label>
+                    <textarea id="address" name="address" rows="3" required placeholder="Enter your complete address"></textarea>
+
+                    <label for="busRoute">Select bus route *</label>
+                    <select id="busRoute" name="busRoute" required>
+                        <option value="">Select route</option>
+                        <option value="route1">Route 1 - Downtown (Main Stop, City Center, Market Square)</option>
+                        <option value="route2">Route 2 - Suburbs (Residential Area, Mall Junction, Park Side)</option>
+                        <option value="route3">Route 3 - Highway (Highway Exit, Industrial Area, Tech Park)</option>
+                        <option value="route4">Route 4 - North Campus (North Gate, Library Stop, Hostel Area)</option>
+                        <option value="route5">Route 5 - South Campus (South Gate, Stadium, Cafeteria)</option>
+                    </select>
+
+                    <label for="stopLocation">Boarding stop *</label>
+                    <input id="stopLocation" name="stopLocation" type="text" required placeholder="Enter nearest stop">
+
+                    <label for="emergencyContact">Emergency contact number *</label>
+                    <input id="emergencyContact" name="emergencyContact" type="tel" inputmode="numeric" pattern="[0-9]{10}" required placeholder="Parent/Guardian mobile">
+
+                    <label for="emergencyContactName">Emergency contact name *</label>
+                    <input id="emergencyContactName" name="emergencyContactName" type="text" required placeholder="Parent/Guardian name">
+
+                    <label for="password">Password *</label>
+                    <div class="password-field">
+                        <input id="password" name="password" type="password" required minlength="6" placeholder="Create a strong password" autocomplete="new-password" aria-describedby="pwHelp">
+                        <button type="button" id="togglePassword" class="btn-icon" aria-label="Show password" title="Show password">Show</button>
+                    </div>
+                    <small id="pwHelp" class="muted">Minimum 6 characters. Use letters, numbers, and symbols for a stronger password.</small>
+                    <div id="passwordStrength" class="pw-strength" aria-hidden="true"></div>
+
+                    <label for="confirmPassword">Confirm password *</label>
+                    <input id="confirmPassword" name="confirmPassword" type="password" required placeholder="Re-enter password" autocomplete="new-password">
+
+                    <div class="accept">
+                        <label>
+                            <input id="terms" name="terms" type="checkbox" required>
+                            <span>I agree to the <a href="#" target="_blank" rel="noopener">Terms & Conditions</a> and <a href="#" target="_blank" rel="noopener">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button id="submitBtn" type="submit" class="btn-primary" aria-live="polite">Create account</button>
+                    <p class="small muted">Already registered? <a href="./index.html">Sign in</a></p>
+                    <div id="message" class="message" role="status" aria-live="polite"></div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <small class="muted">© <span id="year"></span> Smart Bus Tracking System</small>
+        </div>
+    </footer>
+
+    <script>
+        // Populate year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const form = document.getElementById('registerForm');
+        const messageDiv = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const pwStrength = document.getElementById('passwordStrength');
+
+        const yearSemesterSelect = document.getElementById('yearSemester');
+        const yearOnlyInput = document.getElementById('yearOnly');
+        const semesterOnlyInput = document.getElementById('semesterOnly');
+
+        // When user changes the combined select, populate the hidden year/semester fields
+        yearSemesterSelect.addEventListener('change', () => {
+            const v = yearSemesterSelect.value; // format expected: "<year>-<semester>" e.g. "1-1" or "4-8" or "other-other"
+            if (!v) {
+                yearOnlyInput.value = '';
+                semesterOnlyInput.value = '';
+                return;
+            }
+            const parts = v.split('-');
+            // Defensive: if format is not as expected, put whole value in yearOnly and clear semester
+            if (parts.length !== 2) {
+                yearOnlyInput.value = v;
+                semesterOnlyInput.value = '';
+                return;
+            }
+            const [yr, sem] = parts;
+            yearOnlyInput.value = yr;
+            semesterOnlyInput.value = sem;
+        });
+
+        // Ensure hidden fields are set on load in case select has a default
+        (function initYearSemester() {
+            const evt = new Event('change');
+            yearSemesterSelect.dispatchEvent(evt);
+        })();
+
+        // Password visibility toggle
+        togglePassword.addEventListener('click', () => {
+            const type = password.type === 'password' ? 'text' : 'password';
+            password.type = type;
+            confirmPassword.type = type;
+            togglePassword.textContent = type === 'text' ? 'Hide' : 'Show';
+            togglePassword.setAttribute('aria-label', type === 'text' ? 'Hide password' : 'Show password');
+        });
+
+        // Simple password strength meter
+        password.addEventListener('input', () => {
+            const val = password.value;
+            const score = calculatePasswordScore(val);
+            pwStrength.className = 'pw-strength s-' + score;
+            pwStrength.textContent = score === 0 ? '' : (score === 1 ? 'Weak' : score === 2 ? 'Fair' : 'Good');
+        });
+
+        function calculatePasswordScore(pw) {
+            if (!pw) return 0;
+            let score = 0;
+            if (pw.length >= 6) score++;
+            if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
+            if (/[0-9]/.test(pw)) score++;
+            if (/[^A-Za-z0-9]/.test(pw)) score++;
+            return Math.min(score, 3); // 0..3
+        }
+
+        // Restrict tel inputs to digits only and max length 10
+        document.querySelectorAll('input[type="tel"]').forEach(input => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/[^0-9]/g, '').slice(0, 10);
+            });
+        });
+
+        // Update stop placeholder based on route selection
+        const busRouteEl = document.getElementById('busRoute');
+        busRouteEl.addEventListener('change', () => {
+            const stopInput = document.getElementById('stopLocation');
+            const selectedText = busRouteEl.options[busRouteEl.selectedIndex].text;
+            const stops = selectedText.match(/\(([^)]+)\)/);
+            if (stops && stops[1]) {
+                stopInput.placeholder = 'e.g., ' + stops[1].split(',')[0].trim();
+            } else {
+                stopInput.placeholder = 'Enter nearest stop';
+            }
+        });
+
+        // Confirm password live validation
+        confirmPassword.addEventListener('input', () => {
+            if (confirmPassword.value && password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity('Passwords do not match');
+            } else {
+                confirmPassword.setCustomValidity('');
+            }
+        });
+
+        // Show messages
+        function showMessage(text, type = 'info') {
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type + ' show';
+            if (type === 'success') {
+                setTimeout(() => messageDiv.classList.remove('show'), 3500);
+            } else {
+                setTimeout(() => messageDiv.classList.remove('show'), 5000);
+            }
+        }
+
+        // Simulate backend registration (demo)
+        function simulateRegistration(data) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+                    if (users.some(u => u.email.toLowerCase() === data.email.toLowerCase())) {
+                        reject(new Error('Email already registered'));
+                        return;
+                    }
+                    if (users.some(u => u.studentId.toLowerCase() === data.studentId.toLowerCase())) {
+                        reject(new Error('Student ID already exists'));
+                        return;
+                    }
+
+                    users.push(data);
+                    localStorage.setItem('registeredUsers', JSON.stringify(users));
+                    resolve(data);
+                }, 900);
+            });
+        }
+
+        // Form submit handler
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Make sure combined select has been converted to hidden fields
+            // (this is defensive in case browser didn't fire change)
+            const evt = new Event('change');
+            yearSemesterSelect.dispatchEvent(evt);
+
+            // Native validity check
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Additional checks
+            if (password.value.length < 6) {
+                showMessage('Password must be at least 6 characters long', 'error');
+                return;
+            }
+            if (password.value !== confirmPassword.value) {
+                showMessage('Passwords do not match', 'error');
+                return;
+            }
+
+            // Collect data; year and semester are taken from the hidden fields
+            const data = {
+                fullname: form.fullname.value.trim(),
+                email: form.email.value.trim(),
+                studentId: form.studentId.value.trim(),
+                phone: form.phone.value.trim(),
+                department: form.department.value,
+                year: form.year.value || yearOnlyInput.value, // prefer explicit year field if present, else hidden
+                semester: form.semester ? form.semester.value : semesterOnlyInput.value,
+                yearSemester: form.yearSemester ? form.yearSemester.value : yearSemesterSelect.value, // keep combined too
+                address: form.address.value.trim(),
+                busRoute: form.busRoute.value,
+                stopLocation: form.stopLocation.value.trim(),
+                emergencyContact: form.emergencyContact.value.trim(),
+                emergencyContactName: form.emergencyContactName.value.trim(),
+                password: form.password.value,
+                role: 'student',
+                createdAt: new Date().toISOString()
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating account...';
+            showMessage('Creating account...', 'info');
+
+            try {
+                // Replace this with a real API call in production
+                await simulateRegistration(data);
+
+                showMessage('Registration successful — redirecting to sign in', 'success');
+                form.reset();
+                pwStrength.className = 'pw-strength';
+                // reset hidden inputs
+                yearOnlyInput.value = '';
+                semesterOnlyInput.value = '';
+                setTimeout(() => window.location.href = './index.html', 1600);
+            } catch (err) {
+                showMessage(err.message || 'Registration failed', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create account';
+            }
+        });
+    </script>
+</body>
+</html>
