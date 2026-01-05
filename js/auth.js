@@ -49,7 +49,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
                     window.location.href = 'student-dashboard.html';
                     break;
                 case 'incharge':
-                    window.location.href = 'incharge-dashboard.html';
+                    window.location.href = 'bus-incharge.html';
                     break;
                 case 'admin':
                     window.location.href = 'admin-dashboard.html';
@@ -79,7 +79,7 @@ function checkAuth() {
                     window.location.href = 'student-dashboard.html';
                     break;
                 case 'incharge':
-                    window.location.href = 'incharge-dashboard.html';
+                    window.location.href = 'bus-incharge.html';
                     break;
                 case 'admin':
                     window.location.href = 'admin-dashboard.html';
